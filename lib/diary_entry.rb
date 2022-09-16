@@ -19,9 +19,15 @@ def count_words
 end
 
 def reading_time(wpm)
+   fail "reading time must be above zero" unless wpm > 0
    count = @contents.split.size
-   result = count / wpm
-   return result.to_f
+   (count.to_f/ wpm).ceil
+   
+end
+
+def reading_chunk(wpm, minutes)
+   @contents
 end
 
 end
+
