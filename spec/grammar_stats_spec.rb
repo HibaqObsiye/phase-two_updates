@@ -50,12 +50,9 @@ RSpec.describe GrammarStats do
             grammarstats.check("I am not here!")
             grammarstats.check("I am here")
             expect(grammarstats.percentage_good).to eq 67
-         end
+        end
     end
 
-    # grammarstats = GrammarStats.new
-    #     result = grammarstats.check("Abc!")
-    #     result = grammarstats.check("Bbc!")
-    #     expect(result).to eq ["Abc!","Bbc!"]
+    
 
 end
