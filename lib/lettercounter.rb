@@ -13,7 +13,7 @@ class LetterCounter
           counter[char] = ( counter[char] || 1) + 1
         if counter[char] > most_common_count #if the index of the letter is greater than 1
             most_common = char
-           most_common_count = counter[char]
+          p most_common_count = counter[char]
         end
       end
       return [most_common_count, most_common]

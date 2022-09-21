@@ -1,4 +1,4 @@
-require_relative '../lib/diary_entry.rb'
+require './lib/diary_entry.rb'
 
 RSpec.describe DiaryEntry do
 
@@ -37,12 +37,51 @@ RSpec.describe DiaryEntry do
             end
         end
         
-        it "returns a chunk of code that the user can read" do
-            entry = DiaryEntry.new("my_title", "one two three four five six seven")
-            entry.reading_chunk(2,3)
-            expect(entry.reading_chunk(2,3)).to eq "one two three four five six"
+        # it "returns a chunk of code that the user can read" do
+        #     entry = DiaryEntry.new("my_title", "one two three four five six seven")
+        #     entry.reading_chunk(2,3)
+        #     expect(entry.reading_chunk(2,3)).to eq "one two three four five six"
+
+        # end
+
+    describe '#reading_chunk' do
+
+        context "given text that can be read in the time given" do
+            it "returns the full content" do
+                entry = DiaryEntry.new("my_title", "one two three four")
+                entry.reading_chunk(4,1)
+                expect(entry.reading_chunk(4,1)).to eq "one two three four"
+            end
 
         end
+        context "with a contents unreadable within the time" do
+                it "returns a readable chunk" do
+                    entry = DiaryEntry.new("my_title","one two three")
+                    result = entry.reading_chunk(2,1)
+                    expect(result).to eq "one two"
+                end
+        end
+        
+                it "returns the next chunk,next time we are asked" do
+                        entry = DiaryEntry.new("my_title","one two three")
+                        entry.reading_chunk(2,1)
+                        result = entry.reading_chunk(2,1)
+                        expect(result).to eq "three"  
+                end
+        
+                it "restarts after reading the whole contents" do
+                    entry = DiaryEntry.new("my_title","one two three")
+                    entry.reading_chunk(2,1)
+                    entry.reading_chunk(2,1)
+                    result = entry.reading_chunk(2,1)
+                    expect(result).to eq "one two" 
+                end
+        
+                
+            
+
+
+    end
     
     
     end

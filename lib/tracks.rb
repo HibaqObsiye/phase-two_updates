@@ -9,8 +9,6 @@ class Tracks
         @lists << tracks
     end
 
-
-
     def list
     @lists
     end
