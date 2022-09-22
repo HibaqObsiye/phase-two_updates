@@ -10,13 +10,10 @@ class TodoList
     end
   
     def incomplete
-      # Returns all non-done todos
       @todo_list
-      
     end
   
     def complete
-      # Returns all complete todos
      @todo_list.each do |task|
         if task.done?
             @complete_tasks << task
@@ -27,7 +24,6 @@ class TodoList
     end
   
     def give_up!
-      # Marks all todos as complete
       @todo_list.each do |task| 
         task.mark_done!
       end

@@ -9,14 +9,10 @@ class Todo
     end
   
     def mark_done!
-      # Marks the todo as done
-      # Returns nothing
       @done = true
     end
   
     def done?
-      # Returns true if the task is done
-      # Otherwise, false
       if  @done == true
         true
       else
